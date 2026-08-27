@@ -1,0 +1,13 @@
+{
+  "identifier": "com.schweppessoda.bailian.translate",
+  "versions": [
+    {
+      "version": "2.1.0",
+      "desc": "首个独立 Bob 稳定发布：支持百炼按量付费、Coding Plan、Token Plan、流式翻译、取消请求和可选思考强度。",
+      "sha256": "cf567378f84133a72e7ce09ce3625cf2c76b5b5cad3dda7bbb23991cf2bd9839",
+      "url": "https://github.com/SchweppesSoda/bob-bailian-translate/releases/download/v2.1.0/bob-bailian-translate-2.1.0.bobplugin",
+      "minBobVersion": "1.8.0",
+      "timestamp": 1787818961311
+    }
+  ]
+}
