@@ -10,7 +10,7 @@ const latest = appcast.versions[0];
 
 assert.equal(info.identifier, "com.schweppessoda.bailian.translate");
 assert.equal(info.category, "translate");
-assert.equal(info.version, "2.2.1");
+assert.equal(info.version, "2.3.0");
 assert.equal(info.minBobVersion, "1.8.0");
 assert.equal(info.homepage, "https://github.com/SchweppesSoda/bob-bailian-translate");
 assert.equal(info.appcast, "https://raw.githubusercontent.com/SchweppesSoda/bob-bailian-translate/main/appcast.json");
@@ -18,12 +18,12 @@ assert.equal(appcast.identifier, info.identifier);
 assert.equal(latest.version, info.version);
 assert.equal(latest.minBobVersion, info.minBobVersion);
 assert.match(latest.sha256, /^[a-f0-9]{64}$/);
-assert.equal(latest.url, "https://github.com/SchweppesSoda/bob-bailian-translate/releases/download/v2.2.1/bob-bailian-translate-2.2.1.bobplugin");
+assert.equal(latest.url, "https://github.com/SchweppesSoda/bob-bailian-translate/releases/download/v2.3.0/bob-bailian-translate-2.3.0.bobplugin");
 assert.equal(source.version, info.version);
-assert.equal(source.commit, "73f50e37e266c3318b04646cb8cd8b6068633dbc");
+assert.equal(source.commit, "9fb7e6042ed94cf263c2e08b473170cd6cd64399");
 const accessMode = info.options.find((item) => item.identifier === "accessMode");
 assert.equal(accessMode.defaultValue, "pay_as_you_go");
-assert.deepEqual(accessMode.menuValues.map((item) => item.value), ["pay_as_you_go"]);
+assert.deepEqual(accessMode.menuValues.map((item) => item.value), ["pay_as_you_go", "coding_plan", "token_plan"]);
 
 async function javascriptFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -36,16 +36,12 @@ async function javascriptFiles(directory) {
   return result;
 }
 
-let publicProfileFound = false;
 for (const file of await javascriptFiles(root)) {
   if (file.includes(`${path.sep}scripts${path.sep}`)) continue;
   const text = await readFile(file, "utf8");
-  assert.doesNotMatch(text, /__BAILIAN_RUNTIME_PROFILE_DEVELOPMENT__/);
-  if (text.includes("__BAILIAN_RUNTIME_PROFILE_PUBLIC__")) publicProfileFound = true;
+  assert.doesNotMatch(text, /__BAILIAN_RUNTIME_PROFILE_(?:DEVELOPMENT|PERSONAL|PUBLIC)__/);
   for (const forbidden of [/^\s*(?:import|export)\s/m, /\bfetch\s*\(/, /\bnew\s+(?:URL|Response|TextDecoder)\b/, /\bprocess\./, /\bBuffer\./]) {
     assert.doesNotMatch(text, forbidden, `${path.relative(root, file)} must remain Bob JavaScriptCore-compatible`);
   }
 }
-assert.equal(publicProfileFound, true);
-
 console.log("Bob Translate publishing metadata and JavaScriptCore runtime verified.");

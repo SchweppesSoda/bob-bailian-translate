@@ -1,6 +1,6 @@
 {
   "repository": "https://github.com/SchweppesSoda/manggo-bailian-plugin",
-  "commit": "73f50e37e266c3318b04646cb8cd8b6068633dbc",
+  "commit": "9fb7e6042ed94cf263c2e08b473170cd6cd64399",
   "platformPath": "platforms/bob-translate",
-  "version": "2.2.1"
+  "version": "2.3.0"
 }

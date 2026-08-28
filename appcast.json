@@ -2,6 +2,14 @@
   "identifier": "com.schweppessoda.bailian.translate",
   "versions": [
     {
+      "version": "2.3.0",
+      "desc": "单包提供按量付费、Coding Plan 与 Token Plan，默认按量付费；保留现有流式、取消、思考和错误脱敏行为。",
+      "sha256": "d9d36779759a3511517e4f0111f0cb90452212b7bd3e452f5914b8df4d0f6fa8",
+      "url": "https://github.com/SchweppesSoda/bob-bailian-translate/releases/download/v2.3.0/bob-bailian-translate-2.3.0.bobplugin",
+      "minBobVersion": "1.8.0",
+      "timestamp": 1787927440392
+    },
+    {
       "version": "2.2.1",
       "desc": "流式性能与合规更新：公开包仅使用按量付费；合并细碎回调、首段即时显示，并在取消后阻止晚到分片或完成回调。",
       "sha256": "01b4687ac6a51d29763fc8e98139e62d59ea2866528f47e08b96e0e24d5dac47",
