@@ -2,7 +2,7 @@
 
 [![Verify](https://github.com/SchweppesSoda/bob-bailian-translate/actions/workflows/verify.yml/badge.svg)](https://github.com/SchweppesSoda/bob-bailian-translate/actions/workflows/verify.yml)
 
-Bob 1.8+ 的阿里云百炼文本翻译插件，公开包支持按量付费和 Token Plan。插件直接使用你在 Bob 设置中保存的 API Key 请求百炼，不经过第三方服务器。
+Bob 1.8+ 的阿里云百炼文本翻译插件，公开包使用按量付费接口。插件直接使用你在 Bob 设置中保存的 API Key 请求百炼，不经过第三方服务器。
 
 ## 安装
 
@@ -18,7 +18,7 @@ Bob 1.8+ 的阿里云百炼文本翻译插件，公开包支持按量付费和 T
 - 本地校验配置，不通过验证调用模型，也不会消耗额度。
 - API Key 错误信息自动脱敏。
 
-Token Plan 使用核对过的精确模型目录，API Key、计费模式、地域和 Base URL 必须配套。阿里云禁止 Coding Plan 用于自定义应用，因此公开 manifest 和运行时都不提供该线路。
+API Key、地域和 Base URL 必须配套。阿里云禁止 Coding Plan 与 Token Plan 用于自定义应用，因此公开 manifest 不提供这两条线路，运行时也会拒绝旧设置或手工传入的套餐模式。
 
 ## 验证状态
 
@@ -26,7 +26,7 @@ Token Plan 使用核对过的精确模型目录，API Key、计费模式、地�
 
 ## 源码关系
 
-这是只负责 Bob 分发、appcast 和自动索引的薄仓库。权威源码位于 [`SchweppesSoda/manggo-bailian-plugin`](https://github.com/SchweppesSoda/manggo-bailian-plugin)，本版本由提交 [`fdf51b6`](https://github.com/SchweppesSoda/manggo-bailian-plugin/commit/fdf51b6e65e704b3bf4bb3e106e4e4b7b42d4a44) 构建。
+这是只负责 Bob 分发、appcast 和自动索引的薄仓库。权威源码位于 [`SchweppesSoda/manggo-bailian-plugin`](https://github.com/SchweppesSoda/manggo-bailian-plugin)，本版本由提交 [`73f50e3`](https://github.com/SchweppesSoda/manggo-bailian-plugin/commit/73f50e37e266c3318b04646cb8cd8b6068633dbc) 构建。
 
 ## License
 

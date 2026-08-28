@@ -10,7 +10,7 @@ const latest = appcast.versions[0];
 
 assert.equal(info.identifier, "com.schweppessoda.bailian.translate");
 assert.equal(info.category, "translate");
-assert.equal(info.version, "2.2.0");
+assert.equal(info.version, "2.2.1");
 assert.equal(info.minBobVersion, "1.8.0");
 assert.equal(info.homepage, "https://github.com/SchweppesSoda/bob-bailian-translate");
 assert.equal(info.appcast, "https://raw.githubusercontent.com/SchweppesSoda/bob-bailian-translate/main/appcast.json");
@@ -18,12 +18,12 @@ assert.equal(appcast.identifier, info.identifier);
 assert.equal(latest.version, info.version);
 assert.equal(latest.minBobVersion, info.minBobVersion);
 assert.match(latest.sha256, /^[a-f0-9]{64}$/);
-assert.equal(latest.url, "https://github.com/SchweppesSoda/bob-bailian-translate/releases/download/v2.2.0/bob-bailian-translate-2.2.0.bobplugin");
+assert.equal(latest.url, "https://github.com/SchweppesSoda/bob-bailian-translate/releases/download/v2.2.1/bob-bailian-translate-2.2.1.bobplugin");
 assert.equal(source.version, info.version);
-assert.equal(source.commit, "fdf51b6e65e704b3bf4bb3e106e4e4b7b42d4a44");
+assert.equal(source.commit, "73f50e37e266c3318b04646cb8cd8b6068633dbc");
 const accessMode = info.options.find((item) => item.identifier === "accessMode");
 assert.equal(accessMode.defaultValue, "pay_as_you_go");
-assert.deepEqual(accessMode.menuValues.map((item) => item.value), ["pay_as_you_go", "token_plan"]);
+assert.deepEqual(accessMode.menuValues.map((item) => item.value), ["pay_as_you_go"]);
 
 async function javascriptFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
