@@ -1,8 +1,8 @@
-# 百炼翻译与 OCR：Manggo、Bob 与 STranslate 插件
+# Bob 百炼翻译
 
 [![CI](https://github.com/SchweppesSoda/manggo-bailian-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/SchweppesSoda/manggo-bailian-plugin/actions/workflows/ci.yml)
 
-一个源码仓库，同时构建三个原生安装包：
+本仓库是 Bob 百炼翻译的薄发布仓库，维护当前运行时、Release 和 appcast。共同源码与构建工具位于 [manggo-bailian-plugin](https://github.com/SchweppesSoda/manggo-bailian-plugin)，由该源码仓库构建以下三个原生安装包：
 
 | 平台 | 安装包 | 能力 |
 |---|---|---|
@@ -18,7 +18,7 @@ STranslate 使用独立维护的 C# 仓库 [`SchweppesSoda/STranslate.Plugin.Bai
 
 ## 下载与安装
 
-从 [Releases](https://github.com/SchweppesSoda/manggo-bailian-plugin/releases) 下载与你的平台相符的文件。
+本插件从 [Releases](https://github.com/SchweppesSoda/bob-bailian-translate/releases/latest) 下载；其他平台安装包见下方链接。
 
 ### Manggo
 
@@ -76,39 +76,27 @@ Bob 的设置控件不支持条件隐藏，因此 `Reasoning effort` 菜单会�
 
 普通翻译和清晰截图 OCR 建议保持关闭。
 
-## 开发与打包
+## 维护与源码
 
-运行时没有第三方依赖；开发构建使用锁定版本的 esbuild，测试使用 Node.js 内置测试框架。
+本仓库不包含 npm 项目或构建工具。运行时变更应先在
+[共同源码仓库](https://github.com/SchweppesSoda/manggo-bailian-plugin#开发与打包)
+修改、构建并运行合约测试，再按发布流程同步本插件对应的产物。
+
+[`source.json`](source.json) 记录当前产物的来源仓库、提交、平台路径和版本；
+不要直接编辑 `main.js` 或 `lib/`，也不要把未发布源码当作当前 appcast 的安装包。
+
+本发布仓库的本地验证使用 Node.js 22 或更新版本，无需 `npm install`：
 
 ```powershell
-npm ci
-npm run build
-npm test
-npm run package
+node scripts/verify.mjs
 ```
 
-安装包输出位于 `dist/`，包含三个插件包和 `SHA256SUMS.txt`。打包脚本会验证：
-
-- 三个平台版本号一致；
-- ZIP 根目录包含各平台要求的 manifest 和入口文件；
-- Bob 包不含 ESM、Node 或浏览器专属运行时调用；
-- 包内不含本机用户路径或疑似真实 API Key。
-- Manggo、Bob 翻译和 Bob OCR 的 Coding/Token 配置均可通过真实入口校验。
-
-源码边界：
-
-```text
-src/core/              纯数据 Core，不访问任何平台运行时
-src/manggo/            Manggo Bun 入口与网络适配
-src/bob/common/        Bob 翻译公共适配
-src/bob/translate/     Bob 翻译入口
-src/bob/ocr/           Bob OCR 图片与结果适配
-platforms/bob-*/       两个 Bob 包的独立 manifest 和生成产物
-```
+该检查验证发布元数据及 Bob JavaScriptCore 兼容性；它不运行真实 Bob，
+不调用百炼 API，也不上传或发布安装包。
 
 ## Bob 发布结构
 
-一个 Bob `info.json` 只能声明一个 `category`，根 `appcast.json` 也只能对应一个插件标识。因此本仓库负责全部源码和构建，翻译与 OCR 分别同步到两个只负责发布和索引的薄仓库：
+一个 Bob `info.json` 只能声明一个 `category`，根 `appcast.json` 也只能对应一个插件标识。因此共同源码仓库负责全部源码和构建，翻译与 OCR 分别同步到两个只负责发布和索引的薄仓库：
 
 - [`SchweppesSoda/bob-bailian-translate`](https://github.com/SchweppesSoda/bob-bailian-translate)
 - [`SchweppesSoda/bob-bailian-ocr`](https://github.com/SchweppesSoda/bob-bailian-ocr)
