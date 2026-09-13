@@ -2,6 +2,14 @@
   "identifier": "com.schweppessoda.bailian.translate",
   "versions": [
     {
+      "version": "2.3.1",
+      "desc": "修复流式服务错误误报成功，统一 Core 解析与开发回退；与共享源码补丁版本同步。",
+      "sha256": "bda94d790de7e7abf160109ac2803318a5db3cc065968064cd8ad516edce02c3",
+      "url": "https://github.com/SchweppesSoda/bob-bailian-translate/releases/download/v2.3.1/bob-bailian-translate-2.3.1.bobplugin",
+      "minBobVersion": "1.8.0",
+      "timestamp": 1789310052375
+    },
+    {
       "version": "2.3.0",
       "desc": "单包提供按量付费、Coding Plan 与 Token Plan，默认按量付费；保留现有流式、取消、思考和错误脱敏行为。",
       "sha256": "d9d36779759a3511517e4f0111f0cb90452212b7bd3e452f5914b8df4d0f6fa8",
